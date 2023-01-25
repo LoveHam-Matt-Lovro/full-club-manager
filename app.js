@@ -18,10 +18,13 @@ require("./config")(app);
 // 👇 Start handling routes here
 const indexRoutes = require("./routes/index.routes");
 
-app.use("/api", indexRoutes);
-app.use("/games", require("./routes/game.routes"))
+// app.use("/api", indexRoutes);
+app.use("/", indexRoutes);
+
+const gameRoutes =require("./routes/game.routes")
+app.use("/games", gameRoutes )
 //❗❗❗❗❗❗  we used {mergeParams} in review.routes file ,edit if it does not work
-app.use("/games/:id/review", require("./routes/review.routes"))
+// app.use("/games/:id/review", require("./routes/review.routes"))
 
 
 const authRoutes = require("./routes/auth.routes");

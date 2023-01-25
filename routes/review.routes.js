@@ -30,3 +30,4 @@ router.post("/:reviewId/delete", reviewController.deleteReview)
 
 
 
+module.exports = router;

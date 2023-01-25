@@ -26,7 +26,7 @@ const userSchema = new Schema(
       type: String,
       default: "available" 
     },
-    dateOfBirth: Date(),
+    dateOfBirth: String,
     nationality: {
     type: String,
     required:[true,  "Nationality required"],
