@@ -8,3 +8,32 @@ const mongoose = require("mongoose");
 exports.getCreateForm=(req,res,next) => {
     console.log("get create Form")
 }
+
+
+exports.postCreateForm=(req,res,next) => {
+    console.log("post create Form")
+}
+
+
+
+exports.postCreateForm=(req,res,next) => {
+    console.log("postCreateForm")
+}
+
+
+exports.gameDetails=(req,res,next) => {
+    console.log("gameDetails")
+}
+
+exports.getEditForm=(req,res,next) => {
+    console.log("getEditForm")
+}
+
+
+exports.postEditForm=(req,res,next) => {
+    console.log("postEditForm")
+}
+
+exports.deleteGame=(req,res,next) => {
+    console.log("deleteGame")
+}

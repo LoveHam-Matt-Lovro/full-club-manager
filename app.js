@@ -9,6 +9,7 @@ require("./db");
 // https://www.npmjs.com/package/express
 const express = require("express");
 
+
 const app = express();
 
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
@@ -16,7 +17,12 @@ require("./config")(app);
 
 // 👇 Start handling routes here
 const indexRoutes = require("./routes/index.routes");
+
 app.use("/api", indexRoutes);
+app.use("/games", require("./routes/game.routes"))
+//❗❗❗❗❗❗  we used {mergeParams} in review.routes file ,edit if it does not work
+app.use("/games/:id/review", require("./routes/review.routes"))
+
 
 const authRoutes = require("./routes/auth.routes");
 app.use("/auth", authRoutes);

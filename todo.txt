@@ -1,0 +1,20 @@
+*****MODEL*****
+User
+Game
+Selection -> make as embedded
+Review
+
+
+****Extra Models*****
+Team
+Club
+League
+Training
+Message
+
+auth routes
+game routes
+index routes
+
+auth controllers
+game controllers
