@@ -24,7 +24,7 @@ app.use("/", indexRoutes);
 const gameRoutes =require("./routes/game.routes")
 app.use("/games", gameRoutes )
 //❗❗❗❗❗❗  we used {mergeParams} in review.routes file ,edit if it does not work
-// app.use("/games/:id/review", require("./routes/review.routes"))
+ app.use("/games/:id/review", require("./routes/review.routes"))
 
 
 const authRoutes = require("./routes/auth.routes");

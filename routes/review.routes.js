@@ -15,16 +15,14 @@ if (User.role === "coach") {
 }
 
 //Route for list of all reviews
-router.get("/",reviewController.listAllReviews)
+router.get("/", reviewController.listReviews)
 
 //Routes for creating new  game
-router.get("/create",reviewController.getCreateForm)  
-router.post("/create",reviewController.postCreateForm)
+router.post("/create", reviewController.postCreateForm)
 
 
 
 //Routes for editing and deleting single review
-router.get("/:reviewId/edit", reviewController.getEditForm)
 router.put("/:reviewId/edit", reviewController.postEditForm)
 router.delete("/:reviewId/delete", reviewController.deleteReview)
 

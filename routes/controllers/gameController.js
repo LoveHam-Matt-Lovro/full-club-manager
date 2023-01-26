@@ -52,14 +52,6 @@ exports.gameDetails = (req, res, next) => {
 };
 
 
-// getEditForm function
-exports.getEditForm = (req, res, next) => {
-  console.log("getEditForm");
-
-
-};
-
-
 // putEditForm function
 exports.putEditForm = (req, res, next) => {
   console.log("postEditForm");

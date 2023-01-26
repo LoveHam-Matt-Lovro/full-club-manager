@@ -6,11 +6,14 @@ const reviewSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "User",
     },
-    game: {
+    gameId: {
       type: Schema.Types.ObjectId,
       ref: "Game",
     },
-    reviewText: String,
+    coachReview: String,
+    playerReview: String,
+    ourScore: Number,
+    opponentScore: Number
   },
   {
     timestamps: true,

@@ -15,34 +15,47 @@ exports.listReviews=(req,res,next) => {
 }
 
 
-exports.getCreateForm=(req,res,next) => {
-    console.log("get create Form")
-
-    
-}
-
-
-exports.postCreateForm=(req,res,next) => {
-    console.log("post create Form")
-}
-
-
-
 exports.postCreateForm=(req,res,next) => {
     console.log("postCreateForm")
-}
+    const gameId = req.params.id
 
+    
+        const newReview = {...req.body, gameId};
+      console.log( newReview);  
+      Review.create(newReview)
+            .then((newReview) => req.json(newReview))
+            .catch((err) => res.json(err))}
+        
 
-
-exports.getEditForm=(req,res,next) => {
-    console.log("getEditForm")
-}
 
 
 exports.postEditForm=(req,res,next) => {
     console.log("postEditForm")
+
+    const { reviewId } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(reviewId)) {
+      res.status(400).json({ message: "Review ID is not valid" });
+      return;
+    }
+    Review.findByIdAndUpdate(reviewId, req.body, { new:true })
+      .then((updatedReview) =>
+        res.json(updatedReview)
+      )
+      .catch((err) => res.json(err));
 }
 
 exports.deleteReview=(req,res,next) => {
     console.log("deleteReview")
-}
+    const { reviewId } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(reviewId)) {
+      res.status(400).json({ message: "Review ID is not valid" });
+      return;
+    }
+    Review.findByIdAndRemove(reviewId)
+      .then(() =>
+        res.json({ message: `Game with ID ${reviewId} was successfully removed` })
+      )
+      .catch((err) => res.json(err));
+  };

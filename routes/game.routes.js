@@ -13,8 +13,9 @@ router.get("/create", gameController.getCreateForm)
 
 
 router.post("/create",(req, res, next) => {
+
     const newGame = req.body;
-  console.log( newGame);  
+
   Game.create(newGame)
         .then((newGame) => req.json(newGame))
         .catch((err) => res.json(err))}
@@ -26,7 +27,6 @@ router.post("/create",(req, res, next) => {
 router.get("/:gameId", gameController.gameDetails)
 
 //Routes for editing and deleting single game
-router.get("/:gameId/edit", gameController.getEditForm)
 router.put("/:gameId/edit", gameController.putEditForm)
 router.delete("/:gameId/delete", gameController.deleteGame)
 
