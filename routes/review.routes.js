@@ -25,8 +25,8 @@ router.post("/create",reviewController.postCreateForm)
 
 //Routes for editing and deleting single review
 router.get("/:reviewId/edit", reviewController.getEditForm)
-router.post("/:reviewId/edit", reviewController.postEditForm)
-router.post("/:reviewId/delete", reviewController.deleteReview)
+router.put("/:reviewId/edit", reviewController.postEditForm)
+router.delete("/:reviewId/delete", reviewController.deleteReview)
 
 
 

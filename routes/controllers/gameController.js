@@ -1,37 +1,96 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
+const Game = require("../../models/Game.model.js");
 // const checkIfSamePerson = require("../../utils/checkIfSamePerson");
 
 
-exports.listAllGames=(req,res,next)=> {
-    console.log("lsit all games")
-}
+// listAllGames function
+exports.listAllGames = (req, res, next) => {
+  console.log("lsit all games");
+
+  Game.find()
+    .then((allGames) => res.json(allGames))
+    .catch((err) => res.json(err));
+};
 
 
-exports.getCreateForm=(req,res,next) => {
-    console.log("get create Form")
-}
+// getCreateForm function
+exports.getCreateForm = (req, res, next) => {
+  console.log("get create Form");
 
 
-exports.postCreateForm=(req,res,next) => {
-    console.log("post create Form")
-}
+};
 
 
-exports.gameDetails=(req,res,next) => {
-    console.log("gameDetails")
-}
+// postCreateForm function !!! not fucntionning
+exports.postCreateForm =(req, res, next) => {
+//   // console.log("post create Form");
+// const newGame = req.body;
+// console.log( newGame);
+ 
 
-exports.getEditForm=(req,res,next) => {
-    console.log("getEditForm")
-}
+// Game.create(newGame)
+//       .then((newGame) => req.json(newGame))
+//       .catch((err) => res.json(err))
+    };
 
 
-exports.postEditForm=(req,res,next) => {
-    console.log("postEditForm")
-}
+// gameDetails function
+exports.gameDetails = (req, res, next) => {
+  console.log("gameDetails");
 
-exports.deleteGame=(req,res,next) => {
-    console.log("deleteGame")
-}
+  const { gameId } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(gameId)) {
+    res.status(400).json({ message: "Game ID is not valid" });
+    return;
+  }
+  Game.findById(gameId)
+    .then((game) => res.status(200).json(game))
+    .catch((err) => res.json(err));
+};
+
+
+// getEditForm function
+exports.getEditForm = (req, res, next) => {
+  console.log("getEditForm");
+
+
+};
+
+
+// putEditForm function
+exports.putEditForm = (req, res, next) => {
+  console.log("postEditForm");
+
+  const { gameId } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(gameId)) {
+    res.status(400).json({ message: "Game ID is not valid" });
+    return;
+  }
+  Game.findByIdAndUpdate(gameId, req.body, { new:true })
+    .then((updatedGame) =>
+      res.json(updatedGame)
+    )
+    .catch((err) => res.json(err));
+};
+
+
+// deleteGame function
+exports.deleteGame = (req, res, next) => {
+  console.log("deleteGame");
+
+  const { gameId } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(gameId)) {
+    res.status(400).json({ message: "Game ID is not valid" });
+    return;
+  }
+  Game.findByIdAndRemove(gameId)
+    .then(() =>
+      res.json({ message: `Game with ID ${gameId} was successfully removed` })
+    )
+    .catch((err) => res.json(err));
+};

@@ -11,8 +11,9 @@ const gameSchema = new Schema(
       required: [true, "Venue is required."],
     },
     startTime: {
-      type: Date(),
-      required: [true, "Date is required."],
+      type: String,
+      //required: [true, "Date is required."],
+     
     },
     selection:  {
         type: Schema.Types.ObjectId,
