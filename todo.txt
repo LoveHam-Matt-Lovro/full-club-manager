@@ -19,6 +19,7 @@ game controllers
 
 
 _______ - 
-fix get updated list - 
-send token for all protected routes -
+fix get updated game list - 
+
 CRUD for user and review
+we can fix page reload with use effect
