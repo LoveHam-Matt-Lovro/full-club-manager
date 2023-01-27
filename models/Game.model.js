@@ -2,6 +2,9 @@ const { Schema, model } = require("mongoose");
 
 const gameSchema = new Schema(
   {
+    round: {
+      type: Number
+    },
     opponent: {
         type: String, 
         required: [true, "Opponent is required"]
