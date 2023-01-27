@@ -1,8 +1,6 @@
 *****MODEL*****
-User
-Game
 Selection -> make as embedded
-Review
+
 
 
 ****Extra Models*****
@@ -18,3 +16,9 @@ index routes
 
 auth controllers
 game controllers
+
+
+_______ - 
+fix get updated list - 
+send token for all protected routes -
+CRUD for user and review
