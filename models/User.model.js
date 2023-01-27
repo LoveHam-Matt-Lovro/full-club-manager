@@ -24,14 +24,15 @@ const userSchema = new Schema(
     team: String,
     status: {
       type: String,
-      default: "available" 
+      default: "available",
     },
     dateOfBirth: String,
     nationality: {
-    type: String,
-    required:[true,  "Nationality required"],
-    default: "Australian"
-    }
+      type: String,
+      required: [true, "Nationality required"],
+      default: "Australian",
+    },
+    role: String,
   },
 
   {
@@ -42,5 +43,3 @@ const userSchema = new Schema(
 const User = model("User", userSchema);
 
 module.exports = User;
-
-

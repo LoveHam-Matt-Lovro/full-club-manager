@@ -1,8 +1,9 @@
 const { expressjwt: jwt } = require("express-jwt");
 
 // Instantiate the JWT token validation middleware
+//TODO: replace the secret with the one in .env file once the path is fixed
 const isAuthenticated = jwt({
-  secret: process.env.TOKEN_SECRET,
+  secret: process.env.TOKEN_SECRET || "secret",
   algorithms: ["HS256"],
   requestProperty: "payload",
   getToken: getTokenFromHeaders,
