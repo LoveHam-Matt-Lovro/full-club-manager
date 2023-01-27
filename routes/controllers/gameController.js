@@ -15,25 +15,17 @@ exports.listAllGames = (req, res, next) => {
 };
 
 
-// getCreateForm function
-exports.getCreateForm = (req, res, next) => {
-  console.log("get create Form");
-
-
-};
 
 
 // postCreateForm function !!! not fucntionning
-exports.postCreateForm =(req, res, next) => {
-//   // console.log("post create Form");
-// const newGame = req.body;
-// console.log( newGame);
- 
+exports.postCreateForm = (req, res, next) => {
 
-// Game.create(newGame)
-//       .then((newGame) => req.json(newGame))
-//       .catch((err) => res.json(err))
-    };
+  const newGame = req.body;
+
+  Game.create(newGame)
+    .then((newGame) => req.json(newGame))
+    .catch((err) => res.json(err))
+}
 
 
 // gameDetails function
@@ -62,7 +54,7 @@ exports.putEditForm = (req, res, next) => {
     res.status(400).json({ message: "Game ID is not valid" });
     return;
   }
-  Game.findByIdAndUpdate(gameId, req.body, { new:true })
+  Game.findByIdAndUpdate(gameId, req.body, { new: true })
     .then((updatedGame) =>
       res.json(updatedGame)
     )

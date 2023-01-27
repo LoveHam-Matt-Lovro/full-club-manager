@@ -1,34 +1,21 @@
 const express = require("express");
 const router = express.Router();
 const gameController = require("./controllers/gameController.js");
+const { isAuthenticated } = require("../middleware/jwt.middleware.js");
 const Game = require("../models/Game.model.js")
 //
 //Route for list of all games
-router.get("/",gameController.listAllGames)
+router.get("/", gameController.listAllGames)
 
 //Routes for creating new  game
-
-router.get("/create", gameController.getCreateForm)
-// router.post("/create", gameController.postCreateForm)
-
-
-router.post("/create",(req, res, next) => {
-
-    const newGame = req.body;
-
-  Game.create(newGame)
-        .then((newGame) => req.json(newGame))
-        .catch((err) => res.json(err))}
-    )
-
-
+router.post("/", isAuthenticated, gameController.postCreateForm)
 
 //Route for single game
 router.get("/:gameId", gameController.gameDetails)
 
 //Routes for editing and deleting single game
-router.put("/:gameId/edit", gameController.putEditForm)
-router.delete("/:gameId/delete", gameController.deleteGame)
+router.put("/:gameId", isAuthenticated, gameController.putEditForm)
+router.delete("/:gameId", isAuthenticated, gameController.deleteGame)
 
 module.exports = router;
 

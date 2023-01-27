@@ -1,9 +1,10 @@
 
-const { isAuthenticated } = require("./middleware/jwt.middleware")
 // ℹ️ Gets access to environment variables/settings
 
 // https://www.npmjs.com/package/dotenv
 require("dotenv").config();
+
+const { isAuthenticated } = require("./middleware/jwt.middleware")
 
 // ℹ️ Connects to the database
 require("./db");
@@ -25,9 +26,9 @@ const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
 
 const gameRoutes = require("./routes/game.routes")
-app.use("/games", isAuthenticated, gameRoutes)
+app.use("/games", gameRoutes)
 //❗❗❗❗❗❗  we used {mergeParams} in review.routes file ,edit if it does not work
-app.use("/games/:id/review", isAuthenticated, require("./routes/review.routes"))
+app.use("/games/:id/review", require("./routes/review.routes"))
 
 
 const authRoutes = require("./routes/auth.routes");
