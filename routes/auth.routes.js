@@ -46,15 +46,15 @@ router.post("/signup", (req, res, next) => {
 
       // Create the new user in the database
       // We return a pending promise, which allows us to chain another `then`
-      return User.create({ email, password: hashedPassword, firstName, lastName });
+      return User.create({ email, password: hashedPassword, firstName, lastName, role });
     })
     .then((createdUser) => {
       // Deconstruct the newly created user object to omit the password
       // We should never expose passwords publicly
-      const { email, firstName, lastName, _id } = createdUser;
+      const { email, firstName, lastName, _id, role } = createdUser;
 
       // Create a new object that doesn't expose the password
-      const user = { email, firstName, lastName, _id };
+      const user = { email, firstName, lastName, _id, role };
 
       // Send a json response containing the user object
       res.status(201).json({ user: user });
