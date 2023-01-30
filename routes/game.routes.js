@@ -19,5 +19,9 @@ router.delete("/:gameId", gameController.deleteGame)
 
 router.get("/:gameId/selection", gameController.getSelection)
 
+
+// Routes for creating new review
+router.post("/:gameId/review", gameController.newReview)
+
 module.exports = router;
 

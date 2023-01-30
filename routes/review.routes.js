@@ -18,8 +18,8 @@ const isCoach = (req, res, next) => {
 //Route for list of all reviews
 router.get("/", reviewController.listReviews)
 
-//Routes for creating new  game
-router.post("/", isAuthenticated, reviewController.postCreateForm)
+// //Routes for creating new  game
+// router.post("/", isAuthenticated, reviewController.postCreateForm)
 
 
 //Routes for editing and deleting single review

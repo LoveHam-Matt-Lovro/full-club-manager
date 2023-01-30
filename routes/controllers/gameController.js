@@ -18,7 +18,7 @@ exports.listAllGames = (req, res, next) => {
 
 
 
-// postCreateForm function !!! not fucntionning
+
 exports.postCreateForm = (req, res, next) => {
 
   const newGame = req.body;
@@ -88,5 +88,32 @@ exports.getSelection = (req, res, next) => {
     })
     .catch((err) => res.json(err));
 }
+
+
+exports.newReview = (req, res, next) => {
+  const { gameId } = req.params;
+  const { review } = req.body;
+  const { user } = req.session;
+  console.log("review", review);
+
+  Game.findByIdAndUpdate(
+    gameId,
+    { $push: { reviews: { ...review, user } } },
+    { new: true }
+  )
+    .then((updatedGame) =>
+      console.log("updatedGame", updatedGame),
+
+      res.json(updatedGame))
+    .catch((err) => res.json(err));
+};
+
+
+exports.getReviews = (req, res, next) => {
+  const { gameId } = req.params;
+  Game.findById(gameId).populate("reviews")
+    .then((game) => res.json(game))
+    .catch((err) => res.json(err));
+};
 
 //
