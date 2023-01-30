@@ -17,5 +17,7 @@ router.get("/:gameId", gameController.gameDetails)
 router.put("/:gameId", isAuthenticated, gameController.putEditForm)
 router.delete("/:gameId", gameController.deleteGame)
 
+router.get("/:gameId/selection", gameController.getSelection)
+
 module.exports = router;
 

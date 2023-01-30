@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const Game = require("../../models/Game.model.js");
+const User = require("../../models/User.model.js");
 // const checkIfSamePerson = require("../../utils/checkIfSamePerson");
 
 
@@ -78,3 +79,14 @@ exports.deleteGame = (req, res, next) => {
     )
     .catch((err) => res.json(err));
 };
+
+exports.getSelection = (req, res, next) => {
+  User.find()
+    .then((allPlayers) => {
+      console.log("allPlayers", allPlayers);
+      return res.json(allPlayers)
+    })
+    .catch((err) => res.json(err));
+}
+
+//
