@@ -19,7 +19,7 @@ const userSchema = new Schema(
     },
     lastName: {
       type: String,
-      required: [true, "Name is required."],
+
     },
     team: String,
     status: {
@@ -29,7 +29,7 @@ const userSchema = new Schema(
     dateOfBirth: String,
     nationality: {
       type: String,
-      required: [true, "Nationality required"],
+
 
     },
     role: String,
