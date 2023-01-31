@@ -1,0 +1,156 @@
+
+// Select the database to use.
+use('full-club-manager-server');
+
+
+
+
+
+const firstNames = [
+    'John',
+    'Paul',
+    'George',
+    'Ringo',
+    'Pete',
+    'Dave',
+    'Mick',
+    'Keith',
+    'Ronnie',
+    'Charlie',
+    'Brian',
+    'James',
+    'Robert',
+    'Jimmy',
+    'John',
+    'Kurt',
+    'Dave',
+    'Billy',
+    'Thom',
+    'Ed',
+    'Jimi', 'James'
+    ]
+
+
+const lastNames = [
+    'Lennon',
+    'McCartney',
+    'Harrison',
+    'Starr',
+    'Townshend',
+    'Gilmour',
+    'Jagger',
+    'Richards',
+    'Wood',
+    'Watts',
+    'Jones',
+    'May',
+    'Plant',
+    'Page',
+    'Bonham',
+    'Cobain',
+    'Grohl',
+    'Corgan',
+    'Thom',
+    'Yorke','Hendrix', 'Hetfield'
+    ]
+
+const randomNumber10 = () => {
+  // random number between 3 and 10
+
+    return Math.floor(Math.random() * 7) + 3
+}
+
+const randomNumber9999 = () => {
+    return Math.floor(Math.random() * 9999)
+}
+
+const randomFirstName = () => {
+    return firstNames[Math.floor(Math.random() * firstNames.length)]
+}
+
+const randomLastName = () => {
+    return lastNames[Math.floor(Math.random() * lastNames.length)]
+}
+
+const randomPosition = () => {
+    return positions[Math.floor(Math.random() * positions.length)]
+}
+
+const randomEmail = () => {
+    return `${randomFirstName()}.${randomLastName(), randomNumber9999()}@gmail.com`
+}
+
+const getRandomDateofBirthasString = () => {
+    const year = Math.floor(Math.random() * 50) + 1970
+    const month = Math.floor(Math.random() * 12) + 1
+    const day = Math.floor(Math.random() * 28) + 1
+    return `${day}/${month}/${year}`
+}
+
+// get nationality, 60% australian, 20% english, 10% american, 10% other
+const getNationality = () => {
+  
+    const randomNumber = Math.floor(Math.random() * 10)
+    if (randomNumber < 6) {
+        return "Australian"
+    } else if (randomNumber < 8) {
+        return "German"
+    } else {
+        return "Other"
+    }
+}
+
+// get role, 80% player, 10% coach, 10% manager
+const getRole = () => {
+    const randomNumber = Math.floor(Math.random() * 10)
+    if (randomNumber < 8) {
+        return "player"
+    } else if (randomNumber < 9) {
+        return "coach"
+    } else {
+        return "manager"
+    }
+}
+
+
+const password = "Password123"
+
+const create10randomPlayers = () => {
+    const players = []
+    for (let i = 0; i < 10; i++) {
+        players.push({
+            firstName: randomFirstName(),
+            lastName: randomLastName(),
+            role: getRole(),
+            kickingStat: randomNumber10(),
+            handballingStat: randomNumber10(),
+            markingStat: randomNumber10(),
+            speedStat: randomNumber10(),
+            tacklingStat: randomNumber10(),
+            email: randomEmail(),
+            password: password,
+            team: "man",
+            dateOfBirth: getRandomDateofBirthasString(),
+            nationality: getNationality(),
+
+
+        })
+    }
+    return players
+}
+
+db.users.insertMany(create10randomPlayers());
+
+
+// // Insert a few documents into the sales collection.
+// db.sales.insertMany([
+//   { '_id': 1, 'item': 'abc', 'price': 10, 'quantity': 2, 'date': new Date('2014-03-01T08:00:00Z') },
+//   { '_id': 2, 'item': 'jkl', 'price': 20, 'quantity': 1, 'date': new Date('2014-03-01T09:00:00Z') },
+//   { '_id': 3, 'item': 'xyz', 'price': 5, 'quantity': 10, 'date': new Date('2014-03-15T09:00:00Z') },
+//   { '_id': 4, 'item': 'xyz', 'price': 5, 'quantity':  20, 'date': new Date('2014-04-04T11:21:39.736Z') },
+//   { '_id': 5, 'item': 'abc', 'price': 10, 'quantity': 10, 'date': new Date('2014-04-04T21:23:13.331Z') },
+//   { '_id': 6, 'item': 'def', 'price': 7.5, 'quantity': 5, 'date': new Date('2015-06-04T05:08:13Z') },
+//   { '_id': 7, 'item': 'def', 'price': 7.5, 'quantity': 10, 'date': new Date('2015-09-10T08:43:00Z') },
+//   { '_id': 8, 'item': 'abc', 'price': 10, 'quantity': 5, 'date': new Date('2016-02-06T20:20:13Z') },
+// ]);
+
