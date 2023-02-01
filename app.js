@@ -30,6 +30,8 @@ app.use("/games", gameRoutes)
 //❗❗❗❗❗❗  we used {mergeParams} in review.routes file ,edit if it does not work
 app.use("/games/:id/review", require("./routes/review.routes"))
 
+const userRoutes = require("./routes/user.routes")
+app.use("/profile", userRoutes)
 
 const authRoutes = require("./routes/auth.routes");
 app.use("/auth", authRoutes);

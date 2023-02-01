@@ -8,8 +8,6 @@ const User = require("../../models/User.model.js");
 
 // listAllGames function
 exports.listAllGames = (req, res, next) => {
-  console.log("lsit all games");
-
   Game.find()
     .then((allGames) => res.json(allGames))
     .catch((err) => res.json(err));
@@ -46,9 +44,7 @@ exports.gameDetails = (req, res, next) => {
 
 
 // putEditForm function
-exports.putEditForm = (req, res, next) => {
-  console.log("postEditForm");
-
+exports.editGame = (req, res, next) => {
   const { gameId } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(gameId)) {
@@ -83,7 +79,7 @@ exports.deleteGame = (req, res, next) => {
 exports.getSelection = (req, res, next) => {
   User.find()
     .then((allPlayers) => {
-      console.log("allPlayers", allPlayers);
+
       return res.json(allPlayers)
     })
     .catch((err) => res.json(err));

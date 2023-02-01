@@ -6,6 +6,43 @@ const User = require("../../models/User.model.js");
 
 
 
+exports.editUser = (req, res, next) => {
+    console.log("edit user")
+    const { userId } = req.params;
+
+    // find the user by id and update it
+    User.findByIdAndUpdate(userId, req.body, { new: true })
+        .then((updatedUser) => res.json(updatedUser))
+        .catch((err) => res.json(err));
+}
+
+
+exports.getUser = (req, res, next) => {
+    console.log("get user")
+    const { userId } = req.params;
+
+    User.findById(userId)
+        .then((user) => {
+
+            console.log("///user", user)
+            res.status(200).json(user)
+        })
+        .catch((err) => res.json(err));
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 exports.getLoginForm = (req, res, next) => {
     console.log("get Login Form")
 }

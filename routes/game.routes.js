@@ -14,7 +14,7 @@ router.post("/", isAuthenticated, gameController.postCreateForm)
 router.get("/:gameId", gameController.gameDetails)
 
 //Routes for editing and deleting single game
-router.put("/:gameId", isAuthenticated, gameController.putEditForm)
+router.put("/:gameId", isAuthenticated, gameController.editGame)
 router.delete("/:gameId", gameController.deleteGame)
 
 router.get("/:gameId/selection", gameController.getSelection)
