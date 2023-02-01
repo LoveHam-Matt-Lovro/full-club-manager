@@ -21,7 +21,11 @@ const userSchema = new Schema(
       type: String,
 
     },
-    team: String,
+    team: {
+      type: String,
+      default:"Mens"
+    },
+
     status: {
       type: String,
       default: "available",
@@ -29,10 +33,14 @@ const userSchema = new Schema(
     dateOfBirth: String,
     nationality: {
       type: String,
-
-
+      default:"Australian"
     },
-    role: String,
+
+    team: {
+      type: String,
+      default:"Player"
+    },
+
     kickingStat: {
       type: Number,
       enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
