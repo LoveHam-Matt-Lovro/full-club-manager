@@ -9,7 +9,7 @@ const saltRounds = 10;
 // POST /auth/signup  - Creates a new user in the database
 router.post("/signup", (req, res, next) => {
 
-  const { email, password, firstName, lastName, role } = req.body;
+  const { email, password, firstName, lastName, role, team } = req.body;
 
 
   if (email === "" || password === "" || firstName === "" || lastName === "") {
@@ -46,15 +46,15 @@ router.post("/signup", (req, res, next) => {
 
       // Create the new user in the database
       // We return a pending promise, which allows us to chain another `then`
-      return User.create({ email, password: hashedPassword, firstName, lastName, role });
+      return User.create({ email, password: hashedPassword, firstName, lastName, role, team });
     })
     .then((createdUser) => {
       // Deconstruct the newly created user object to omit the password
       // We should never expose passwords publicly
-      const { email, firstName, lastName, _id, role } = createdUser;
+      const { email, firstName, lastName, _id, role, team } = createdUser;
 
       // Create a new object that doesn't expose the password
-      const user = { email, firstName, lastName, _id, role };
+      const user = { email, firstName, lastName, _id, role, team };
 
       // Send a json response containing the user object
       res.status(201).json({ user: user });
