@@ -6,7 +6,7 @@ const gameSchema = new Schema(
   {
     league: {
       type: String,
-      default:"AFLG"
+      default:"German National League"
     },
     round: {
       type: Number
