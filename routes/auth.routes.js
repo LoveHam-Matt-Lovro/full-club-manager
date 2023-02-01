@@ -9,7 +9,7 @@ const saltRounds = 10;
 // POST /auth/signup  - Creates a new user in the database
 router.post("/signup", (req, res, next) => {
 
-  const { email, password, firstName, lastName, role } = req.body;
+  const { email, password, firstName, lastName, role, dateOfBirth, team, nationality } = req.body;
 
 
   if (email === "" || password === "" || firstName === "" || lastName === "") {
@@ -46,15 +46,15 @@ router.post("/signup", (req, res, next) => {
 
       // Create the new user in the database
       // We return a pending promise, which allows us to chain another `then`
-      return User.create({ email, password: hashedPassword, firstName, lastName, role });
+      return User.create({ email, password: hashedPassword, firstName, lastName, role, dateOfBirth, team, nationality  });
     })
     .then((createdUser) => {
       // Deconstruct the newly created user object to omit the password
       // We should never expose passwords publicly
-      const { email, firstName, lastName, _id, role } = createdUser;
+      const { email, firstName, lastName, _id, role, dateOfBirth, team, nationality  } = createdUser;
 
       // Create a new object that doesn't expose the password
-      const user = { email, firstName, lastName, _id, role };
+      const user = { email, firstName, lastName, _id, role, dateOfBirth, team, nationality  };
 
       // Send a json response containing the user object
       res.status(201).json({ user: user });
@@ -86,10 +86,10 @@ router.post("/login", (req, res, next) => {
 
       if (passwordCorrect) {
         // Deconstruct the user object to omit the password
-        const { _id, email, firstName, lastName, role } = foundUser;
+        const { _id, email, firstName, lastName, role, dateOfBirth, team, nationality  } = foundUser;
 
         // Create an object that will be set as the token payload
-        const payload = { _id, email, firstName, lastName, role };
+        const payload = { _id, email, firstName, lastName, role, dateOfBirth, team, nationality  };
         console.log(req.payload)
 
 
