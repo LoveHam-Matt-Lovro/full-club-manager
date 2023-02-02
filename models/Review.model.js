@@ -10,10 +10,12 @@ const reviewSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "Game",
     },
-    coachReview: String,
-    playerReview: String,
-    ourScore: Number,
-    opponentScore: Number
+
+    text: {
+      type: String,
+      required: [true, "Review is required."],
+
+    },
   },
   {
     timestamps: true,
