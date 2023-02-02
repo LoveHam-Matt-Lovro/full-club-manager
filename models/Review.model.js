@@ -14,8 +14,7 @@ const reviewSchema = new Schema(
     text: {
       type: String,
       required: [true, "Review is required."],
-
-    }
+    },
   },
   {
     timestamps: true,
