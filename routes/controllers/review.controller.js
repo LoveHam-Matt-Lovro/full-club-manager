@@ -6,7 +6,7 @@ const Review = require("../../models/Review.model.js")
 
 // needs to be reviews for a specific game, so we might need to populate games?
 exports.listReviews = (req, res, next) => {
-  Review.find()
+  Review.find().populate("author")
     .then((allReviews) => res.json(allReviews))
     .catch((err) => res.json(err));
 
