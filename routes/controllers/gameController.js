@@ -38,7 +38,7 @@ exports.gameDetails = (req, res, next) => {
     res.status(400).json({ message: "Game ID is not valid" });
     return;
   }
-  Game.findById(gameId)
+  Game.findById(gameId).populate("attack").populate("midfield").populate("defense")
     .then((game) => res.status(200).json(game))
     .catch((err) => res.json(err));
 };

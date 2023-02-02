@@ -6,7 +6,7 @@ const gameSchema = new Schema(
   {
     league: {
       type: String,
-      default:"German National League"
+      default: "German National League"
     },
     round: {
       type: Number
@@ -24,7 +24,9 @@ const gameSchema = new Schema(
       //required: [true, "Date is required."],
 
     },
-    selection: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+    attack: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+    midfield: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+    defense: [{ type: Schema.Types.ObjectId, ref: 'User' }],
 
 
     numberOfPlayers: {
