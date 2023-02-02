@@ -1,19 +1,17 @@
 const { Schema, model } = require("mongoose");
 
-
-
 const gameSchema = new Schema(
   {
     league: {
       type: String,
-      default: "German National League"
+      default: "German National League",
     },
     round: {
-      type: Number
+      type: Number,
     },
     opponent: {
       type: String,
-      required: [true, "Opponent is required"]
+      required: [true, "Opponent is required"],
     },
     venue: {
       type: String,
@@ -22,7 +20,6 @@ const gameSchema = new Schema(
     startTime: {
       type: String,
       //required: [true, "Date is required."],
-
     },
     attack: [{ type: Schema.Types.ObjectId, ref: 'User' }],
     midfield: [{ type: Schema.Types.ObjectId, ref: 'User' }],
@@ -32,13 +29,14 @@ const gameSchema = new Schema(
     numberOfPlayers: {
       type: Number,
       default: 15,
-      required: [true, "Please add number of players per team"]
-    }
-    ,
-    reviews: [{
-      type: Schema.Types.ObjectId,
-      ref: 'Review'
-    }]
+      required: [true, "Please add number of players per team"],
+    },
+    reviews: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Review",
+      },
+    ],
   },
   {
     timestamps: true,
@@ -48,5 +46,3 @@ const gameSchema = new Schema(
 const Game = model("Game", gameSchema);
 
 module.exports = Game;
-
-

@@ -2,20 +2,25 @@ const { Schema, model } = require("mongoose");
 
 const selectionSchema = new Schema(
   {
-    forwards:  [{
+    forwards: [
+      {
         type: Schema.Types.ObjectId,
-        ref: 'User'
-    }],
-    defenders:  [{
+        ref: "User",
+      },
+    ],
+    defenders: [
+      {
         type: Schema.Types.ObjectId,
-        ref: 'User'
-    }],
-    midfielders:  [{
+        ref: "User",
+      },
+    ],
+    midfielders: [
+      {
         type: Schema.Types.ObjectId,
-        ref: 'User'
-    }],
+        ref: "User",
+      },
+    ],
   },
- 
 
   {
     timestamps: true,
