@@ -1,3 +1,6 @@
+const bcrypt = require("bcrypt");
+
+
 
 // Select the database to use.
 use('full-club-manager-server');
@@ -112,12 +115,14 @@ const getRole = () => {
     }
 }
 
-
+const salt = bcrypt.genSaltSync(10);
 const password = "Password123"
+const hashedPassword = bcrypt.hashSync(password, salt);
+
 
 const create10randomPlayers = () => {
     const players = []
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 2; i++) {
         players.push({
             firstName: randomFirstName(),
             lastName: randomLastName(),

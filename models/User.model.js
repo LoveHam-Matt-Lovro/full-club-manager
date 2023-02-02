@@ -23,7 +23,7 @@ const userSchema = new Schema(
     },
     team: {
       type: String,
-      default:"Mens"
+      default: "Men"
     },
 
     status: {
@@ -33,12 +33,12 @@ const userSchema = new Schema(
     dateOfBirth: String,
     nationality: {
       type: String,
-      default:"Australian"
+      default: "Australian"
     },
 
-    team: {
+    role: {
       type: String,
-      default:"Player"
+      default: "player",
     },
 
     kickingStat: {

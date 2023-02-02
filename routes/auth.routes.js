@@ -10,6 +10,7 @@ const saltRounds = 10;
 router.post("/signup", (req, res, next) => {
 
   const { email, password, firstName, lastName, role, dateOfBirth, team, nationality } = req.body;
+  const newUser = { ...req.body }
 
 
   if (email === "" || password === "" || firstName === "" || lastName === "") {
@@ -47,6 +48,7 @@ router.post("/signup", (req, res, next) => {
       // Create the new user in the database
       // We return a pending promise, which allows us to chain another `then`
       return User.create({ email, password: hashedPassword, firstName, lastName, role, dateOfBirth, team, nationality });
+
     })
     .then((createdUser) => {
       // Deconstruct the newly created user object to omit the password
@@ -55,7 +57,7 @@ router.post("/signup", (req, res, next) => {
 
       // Create a new object that doesn't expose the password
       const user = { email, firstName, lastName, _id, role, dateOfBirth, team, nationality };
-
+      console.log("This is what we send: ", user)
       // Send a json response containing the user object
       res.status(201).json({ user: user });
     })
@@ -86,11 +88,13 @@ router.post("/login", (req, res, next) => {
 
       if (passwordCorrect) {
         // Deconstruct the user object to omit the password
-        const { _id, email, firstName, lastName, role, dateOfBirth, team, nationality } = foundUser;
-
-        // Create an object that will be set as the token payload
+        // const { _id, email, firstName, lastName, role, dateOfBirth, team, nationality } = foundUser;
+        console.log("...fund user...")
+        console.log(foundUser)        // Create an object that will be set as the token payload
         const payload = { _id, email, firstName, lastName, role, dateOfBirth, team, nationality };
-        console.log(req.payload)
+        console.log("...login payload...")
+        console.log(payload)
+
 
 
         // Create a JSON Web Token and sign it
