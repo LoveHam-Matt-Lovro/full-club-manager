@@ -19,56 +19,77 @@ const userSchema = new Schema(
     },
     lastName: {
       type: String,
-
+      required: [true, "Name is required."],
     },
     team: {
       type: String,
-      default: "Men"
+      default: "Men",
     },
-
     status: {
       type: String,
       default: "available",
     },
-    dateOfBirth: String,
+    dateOfBirth: {
+      type: String,
+      required: [true, "Date of Birth is required."],
+    },
     nationality: {
       type: String,
-      default: "Australian"
+      default: "Australian",
     },
-
     role: {
       type: String,
       default: "player",
+      required: true,
     },
 
     kickingStat: {
       type: Number,
-      enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     },
     handballingStat: {
       type: Number,
-      enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     },
     speedStat: {
       type: Number,
-      enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     },
     markingStat: {
       type: Number,
-      enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     },
     tacklingStat: {
       type: Number,
-      enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     },
     aboutMe: {
-      type: String
+      type: String,
     },
     favouriteAFLTeam: {
       type: String,
-      enum: ["Adelaide Crows", "Brisbane Lions", "Carlton Blues", "Collingwood Magpies", "Essendon Bombers", "Fremantle Dockers", "Geelong Cats", "Gold Coast Suns", "Greater Western Sydney Giants", "Hawthown Hawks", "Melbourne Demons", "North Melbourne Kangaroos", "Port Adelaide Power", "Richmond Tigers", "St.Kilda Saints", "Sydney Swans", "West Coast Eagles", "Western Bulldogs"]
+      enum: [
+        "Adelaide Crows",
+        "Brisbane Lions",
+        "Carlton Blues",
+        "Collingwood Magpies",
+        "Essendon Bombers",
+        "Fremantle Dockers",
+        "Geelong Cats",
+        "Gold Coast Suns",
+        "Greater Western Sydney Giants",
+        "Hawthown Hawks",
+        "Melbourne Demons",
+        "North Melbourne Kangaroos",
+        "Port Adelaide Power",
+        "Richmond Tigers",
+        "St.Kilda Saints",
+        "Sydney Swans",
+        "West Coast Eagles",
+        "Western Bulldogs",
+      ],
     },
-    favouriteFootballMemory: String
+    favouriteFootballMemory: String,
   },
 
   {
