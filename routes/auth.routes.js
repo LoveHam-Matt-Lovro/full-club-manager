@@ -10,7 +10,7 @@ const saltRounds = 10;
 router.post("/signup", (req, res, next) => {
 
   const { email, password, firstName, lastName, role, dateOfBirth, team, nationality } = req.body;
-  const newUser = { ...req.body }
+  
 
 
   if (email === "" || password === "" || firstName === "" || lastName === "") {
