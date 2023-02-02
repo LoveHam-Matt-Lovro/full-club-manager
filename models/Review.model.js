@@ -15,8 +15,7 @@ const reviewSchema = new Schema(
       type: String,
       required: [true, "Review is required."],
 
-    },
-    authorRole: String
+    }
   },
   {
     timestamps: true,
