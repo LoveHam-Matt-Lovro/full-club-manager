@@ -3,6 +3,7 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const Game = require("../../models/Game.model.js");
 const User = require("../../models/User.model.js");
+const Review = require("../../models/Review.model.js");
 // const checkIfSamePerson = require("../../utils/checkIfSamePerson");
 
 
@@ -88,21 +89,31 @@ exports.getSelection = (req, res, next) => {
 
 exports.newReview = (req, res, next) => {
   const { gameId } = req.params;
-  const { review } = req.body;
-  const { user } = req.session;
-  console.log("review", review);
+  // const { review } = req.body;
 
-  Game.findByIdAndUpdate(
-    gameId,
-    { $push: { reviews: { ...review, user } } },
-    { new: true }
-  )
-    .then((updatedGame) =>
-      console.log("updatedGame", updatedGame),
 
-      res.json(updatedGame))
+  Review.create(req.body)
+    .then((newReview) => {
+      console.log("newReview", newReview);
+      return Game.findByIdAndUpdate(
+        gameId,
+        { $push: { reviews: newReview._id } },
+        { new: true }
+      )
+    })
+    .then((updatedGame) => {
+      console.log("updatedGame", updatedGame)
+      return res.json(updatedGame)
+    }
+    )
     .catch((err) => res.json(err));
 };
+
+
+
+
+
+
 
 
 exports.getReviews = (req, res, next) => {
