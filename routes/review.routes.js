@@ -21,7 +21,9 @@ router.get("/", reviewController.listReviews);
 // router.post("/", isAuthenticated, reviewController.postCreateForm)
 
 //Routes for editing and deleting single review
-router.put("/:reviewId", isAuthenticated, reviewController.postEditForm);
-router.delete("/:reviewId", isAuthenticated, reviewController.deleteReview);
+router.put("/:reviewId", reviewController.postEditForm);
+router.delete("/:reviewId", reviewController.deleteReview);
+// router.put("/:reviewId", isAuthenticated, reviewController.postEditForm);
+// router.delete("/:reviewId", isAuthenticated, reviewController.deleteReview);
 
 module.exports = router;
