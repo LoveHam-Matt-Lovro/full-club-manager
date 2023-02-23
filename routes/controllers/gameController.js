@@ -15,7 +15,7 @@ exports.listAllGames = (req, res, next) => {
 
 exports.postCreateForm = (req, res, next) => {
   const newGame = req.body;
-
+  console.log(newGame)
   Game.create(newGame)
     .then((newGame) => req.json(newGame))
     .catch((err) => res.json(err));
