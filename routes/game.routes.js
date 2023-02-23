@@ -8,7 +8,8 @@ const Game = require("../models/Game.model.js");
 router.get("/", gameController.listAllGames);
 
 //Routes for creating new  game
-router.post("/", isAuthenticated, gameController.postCreateForm);
+// router.post("/", isAuthenticated, gameController.postCreateForm);
+router.post("/", gameController.postCreateForm);
 
 //Route for single game
 router.get("/:gameId", gameController.gameDetails);
