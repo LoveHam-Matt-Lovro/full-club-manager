@@ -1,4 +1,7 @@
 
+
+
+
 // ℹ️ Gets access to environment variables/settings
 
 // https://www.npmjs.com/package/dotenv
@@ -15,7 +18,8 @@ const express = require("express");
 
 
 const app = express();
-
+let cors = require("cors");
+app.use(cors());
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
 require("./config")(app);
 
